@@ -29,5 +29,8 @@ Route::any("end",function(){
     return view('end');
 });
 
+Route::any("startquiz",'QuestionController@startquiz');
 Route::any("add",'QuestionController@add');
+Route::any("update",'QuestionController@update');
+Route::any("delete",'QuestionController@delete');
 Route::any("questions",'QuestionController@show');
