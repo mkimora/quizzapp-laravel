@@ -1,12 +1,12 @@
-<link rel="stylesheet" href="files/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="files/my.css" type="text/css">
+<link href="files/bootstrap.min.css" rel="stylesheet"  type="text/css">
+<link href="files/my.css" rel="stylesheet"  type="text/css">
 
 
 
 
 
 <br>
-<h3 style="text-align: center;"><strong>Quizz en ligne : Mama Restaurant</strong> </h3>
+<h3 style="text-align: center;"><strong>Quiz en ligne : Mama Restaurant</strong> </h3>
 <br>
 <br>
 
@@ -18,13 +18,26 @@
 
 </head>
 <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                @foreach($errors->all() as $error)
+                <h2>{{$error}}</h2>
+                @endforeach
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
 <div class="container-xl">
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-1"><h2>Users <b></b></h2></div>
-                    <div class="col-sm-7"><Button data-toggle="modal" data-target="#Modal_add" class="btn btn-primary">Ajouter</Button></div>
+                    <div class="col-sm-1"><h2>Admin <b></b></h2></div>
+                    <div class="col-sm-7"><Button data-toggle="modal" data-target="#Modal_add" class="btn btn-primary">Ajouter</Button>
+                    <a href="/">Accueil</a>
+                </div>
                     <div class="col-sm-4">
                         <div class="search-box">
 
@@ -69,7 +82,6 @@
     <div class="modal-content">
         <form method="post" action="/add">
             @csrf
-            
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Add</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -78,12 +90,72 @@
       </div>
       <div class="modal-body">
         <div class="row">
-         
+         <h5>Question: </h5><br>
+        </div>
+        <div class="row" style="padding: 10px;">
+         <input name="question" class="form-control">
+        </div>
+        <div class="row">
+            <div class="col-md-6"><label>A:</label></div>
+            <div class="col-md-6"><label>B:</label></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><input name="opa"></div>
+            <div class="col-md-6"><input name="opb"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><label>C:</label></div>
+            <div class="col-md-6"><label>D:</label></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><input name="opc"></div>
+            <div class="col-md-6"><input name="opd"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><label>E:</label></div>
+            <div class="col-md-6"><label>F:</label></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><input name="ope"></div>
+            <div class="col-md-6"><input name="opf"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><label>G:</label></div>
+            <div class="col-md-6"><label>H:</label></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><input name="opg"></div>
+            <div class="col-md-6"><input name="oph"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><label>I:</label></div>
+            <div class="col-md-6"><label>J:</label></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><input name="opi"></div>
+            <div class="col-md-6"><input name="opj"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><label>Answer: </label>
+                <select name="ans" class="form-control">
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                    <option value="d">D</option>
+                    <option value="d">E</option>
+                    <option value="d">F</option>
+                    <option value="d">G</option>
+                    <option value="d">H</option>
+                    <option value="d">I</option>
+                    <option value="d">J</option>
+                </select>
+            </div>
+            <div class="col-md-9"></div>
         </div>
       
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
         <button type="submit" class="btn btn-primary" >Ajouter Question</button>
       </div>
       </form>

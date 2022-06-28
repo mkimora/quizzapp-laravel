@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::any("test",function(){
+Route::any("ansDesk",function(){
     return view('answerDesk');
 });
 
@@ -32,3 +32,5 @@ Route::any("start",function(){
 Route::any("end",function(){
     return view('end');
 });
+
+Route::any("add",'QuestionController@add');

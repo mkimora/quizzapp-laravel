@@ -10,10 +10,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-5" style="padding-top: 50vh;">
+            <div class="col-md-5" style="padding-top: 45vh;">
                 <br>
-                
-                <a><button class="btn btn-primary btn-lg ">Gérant</button></a>
+                <div class="text-center">
+                <a href="/questions" style="margin-left: 50vh; width: 100px;"><button class="btn btn-primary ">ADMINISTRATEUR</button></a><br><br>
+                <a href="/start" style="margin-left: 50vh; width: 80px;"><button class="btn btn-primary ">POSTULANTS(ES)</button></a><br><br>
+                </div>
             </div>
             <div class="col-md-5"></div>
         </div>
