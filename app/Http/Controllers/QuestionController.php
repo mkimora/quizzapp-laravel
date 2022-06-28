@@ -16,12 +16,6 @@ class QuestionController extends Controller
             'opb'=>'required',
             'opc'=>'required',
             'opd'=>'required',
-            'ope'=>'required',
-            'opf'=>'required',
-            'opg'=>'required',
-            'oph'=>'required',
-            'opi'=>'required',
-            'opj'=>'required',
             'ans'=>'required',
         ]);
         $q=new question();
@@ -30,17 +24,18 @@ class QuestionController extends Controller
         $q->b=$request->opb;
         $q->c=$request->opc;
         $q->d=$request->opd;
-        $q->e=$request->ope;
-        $q->f=$request->opf;
-        $q->g=$request->opg;
-        $q->h=$request->oph;
-        $q->i=$request->opi;
-        $q->j=$request->opj;
         $q->ans=$request->ans;
 
-        //$q=save();
-        Session::put('successMessage',"Question successfully Added");
+        $q->save();
+    Session::put('successMessage',"Question ajoutée avec succés");
 
         return redirect('questions');
+    }
+
+    public function show()
+    {
+        $qs=question::all();
+
+        return view('questions')->with(['questions'=>$qs]);
     }
 }

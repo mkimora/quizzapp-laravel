@@ -21,12 +21,6 @@ class CreateQuestionsTable extends Migration
             $table->string('b')->default('0')->nullable();
             $table->string('c')->default('0')->nullable();
             $table->string('d')->default('0')->nullable();
-            $table->string('e')->default('0')->nullable();
-            $table->string('f')->default('0')->nullable();
-            $table->string('g')->default('0')->nullable();
-            $table->string('h')->default('0')->nullable();
-            $table->string('i')->default('0')->nullable();
-            $table->string('j')->default('0')->nullable();
             $table->string('ans')->default('0')->nullable();
             $table->timestamps();
         });

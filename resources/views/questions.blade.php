@@ -23,8 +23,16 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 @foreach($errors->all() as $error)
+                <div class="callout"><strong>Erreur!</strong></div>
+
                 <h2>{{$error}}</h2>
                 @endforeach
+              {{--   @if ($session::get('successMessage'))
+                <div class="callout"><strong>Succés!</strong></div>
+
+                <?php Session::forget('successMessage');?>
+                    
+                @endif --}}
             </div>
             <div class="col-md-4"></div>
         </div>
@@ -36,7 +44,7 @@
                 <div class="row">
                     <div class="col-sm-1"><h2>Admin <b></b></h2></div>
                     <div class="col-sm-7"><Button data-toggle="modal" data-target="#Modal_add" class="btn btn-primary">Ajouter</Button>
-                    <a href="/">Accueil</a>
+                    <a href="/" style="margin-left:5%;">Accueil</a>
                 </div>
                     <div class="col-sm-4">
                         <div class="search-box">
@@ -55,16 +63,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($questions as $q)
                     <tr>
-                        <td>1</td>
-                        <td>Quel est notre menu du Mardi ?</td>
+                        <td>{{$loop->index}}</td>
+                        <td>{{$q->question}} ?</td>
                         
 
                         <td>
-                            <a href="#" class="text-warning"  data-toggle="tooltip" data-toggle="modal" data-target="#Modal_update">Modifier</a>
+                            <a href="#" class="text-warning"  data-toggle="modal" data-target="#Modal_update{{$q->id}}">Modifier</a>
                             <a href="#" class="text-danger"  data-toggle="tooltip" >Supprimer</a>
                         </td>
                     </tr>
+                    @endforeach
+              
 
                 </tbody>
             </table>
@@ -76,14 +87,14 @@
 </html>
 
 
-<!-- Modal-Add -->
-<div class="modal fade" id="Modal_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal-Update -->
+<div class="modal fade" id="Modal_update{{$q->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
         <form method="post" action="/add">
             @csrf
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -93,61 +104,32 @@
          <h5>Question: </h5><br>
         </div>
         <div class="row" style="padding: 10px;">
-         <input name="question" class="form-control">
+         <input name="question" value="{{$q->question}}" class="form-control">
         </div>
         <div class="row">
             <div class="col-md-6"><label>A:</label></div>
             <div class="col-md-6"><label>B:</label></div>
         </div>
         <div class="row">
-            <div class="col-md-6"><input name="opa"></div>
-            <div class="col-md-6"><input name="opb"></div>
+            <div class="col-md-6"><input {{$q->a}} name="opa"></div>
+            <div class="col-md-6"><input {{$q->b}} name="opb"></div>
         </div>
         <div class="row">
             <div class="col-md-6"><label>C:</label></div>
             <div class="col-md-6"><label>D:</label></div>
         </div>
         <div class="row">
-            <div class="col-md-6"><input name="opc"></div>
-            <div class="col-md-6"><input name="opd"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><label>E:</label></div>
-            <div class="col-md-6"><label>F:</label></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><input name="ope"></div>
-            <div class="col-md-6"><input name="opf"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><label>G:</label></div>
-            <div class="col-md-6"><label>H:</label></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><input name="opg"></div>
-            <div class="col-md-6"><input name="oph"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><label>I:</label></div>
-            <div class="col-md-6"><label>J:</label></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><input name="opi"></div>
-            <div class="col-md-6"><input name="opj"></div>
+            <div class="col-md-6"><input {{$q->c}} name="opc"></div>
+            <div class="col-md-6"><input {{$q->d}} name="opd"></div>
         </div>
         <div class="row">
             <div class="col-md-3"><label>Answer: </label>
                 <select name="ans" class="form-control">
+                    <option value="{{$q->ans}}">{{$q->ans}}</option>
                     <option value="a">A</option>
                     <option value="b">B</option>
                     <option value="c">C</option>
                     <option value="d">D</option>
-                    <option value="d">E</option>
-                    <option value="d">F</option>
-                    <option value="d">G</option>
-                    <option value="d">H</option>
-                    <option value="d">I</option>
-                    <option value="d">J</option>
                 </select>
             </div>
             <div class="col-md-9"></div>

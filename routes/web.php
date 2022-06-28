@@ -21,10 +21,6 @@ Route::any("ansDesk",function(){
     return view('answerDesk');
 });
 
-Route::any("questions",function(){
-    return view('questions');
-});
-
 Route::any("start",function(){
     return view('start');
 });
@@ -34,3 +30,4 @@ Route::any("end",function(){
 });
 
 Route::any("add",'QuestionController@add');
+Route::any("questions",'QuestionController@show');
