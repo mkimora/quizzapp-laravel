@@ -13,8 +13,8 @@
             <div class="col-md-5" style="padding-top: 45vh;">
                 <br>
                 <div class="text-center">
-                <a href="/questions" style="margin-left: 50vh; width: 100px;"><button class="btn btn-primary ">ADMINISTRATEUR</button></a><br><br>
-                <a href="/logreg" style="margin-left: 50vh; width: 80px;"><button class="btn btn-primary ">POSTULANTS(ES)</button></a><br><br>
+                <a href="/login" style="margin-left: 50vh; width: 100px;"><button class="btn btn-info ">S'inscrire</button></a><br><br>
+                <a href="/register" style="margin-left: 50vh; width: 100px;"><button class="btn btn-info ">Connexion</button></a><br><br>
                 </div>
             </div>
             <div class="col-md-5"></div>

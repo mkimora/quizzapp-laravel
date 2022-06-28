@@ -17,6 +17,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/logreg', function () {
+    return view('logreg');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::post('/register', [\App\Http\Controllers\RegisterController::class,'register'])->name('register');
+Route::post('/login', [\App\Http\Controllers\LoginController::class,'login'])->name('login');
+
 Route::any("ansDesk",function(){
     return view('answerDesk');
 });
@@ -29,6 +44,7 @@ Route::any("end",function(){
     return view('end');
 });
 
+Route::any("submitans",'QuestionController@submitans');
 Route::any("startquiz",'QuestionController@startquiz');
 Route::any("add",'QuestionController@add');
 Route::any("update",'QuestionController@update');
